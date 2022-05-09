@@ -733,8 +733,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     }
                 }
-                else if (e.target.className.indexOf('_32yJO') != -1) {
-                    e.preventDefault()
+                else if (document.querySelector('.RnEpo._Yhr4')) {
+                    // e.preventDefault()
                     if (e.deltaY > 0) {
                         let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
                         if (b2) b2.click()
@@ -747,6 +747,63 @@ document.addEventListener('DOMContentLoaded', function () {
             },
                 { passive: false })
         }
+        // else if (/https:\/\/www\.instagram\.com/i.test(location.href)) {
+        //     addEventListener('wheel', function (e) {
+        //         if (/_9AhH0|fXIG0/.test(e.target.className)) {
+        //             let t = e.target
+        //             while (t.parentElement && t.parentElement.className.indexOf('EcJQs') == -1) {
+        //                 t = t.parentElement
+        //             }
+        //             if (t.tagName == 'HTML') {
+        //                 if (e.deltaY > 0) {
+        //                     let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                     if (b2) {
+        //                         e.preventDefault()
+        //                         b2.click()
+        //                     }
+        //                 }
+        //                 else if (e.deltaY < 0) {
+        //                     let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                     if (b1) {
+        //                         e.preventDefault()
+        //                         b1.click()
+        //                     }
+        //                 }
+        //             }
+        //             else if (t.parentElement.className.indexOf('EcJQs') != -1) {
+        //                 e.preventDefault()
+        //                 if (e.deltaY > 0) {
+        //                     let b2 = t.parentElement.querySelector('._6CZji')
+        //                     if (b2) b2.click()
+        //                     else {
+        //                         b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                         if (b2) b2.click()
+        //                     }
+        //                 }
+        //                 else if (e.deltaY < 0) {
+        //                     let b1 = t.parentElement.querySelector('.POSa_')
+        //                     if (b1) b1.click()
+        //                     else {
+        //                         b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                         if (b1) b1.click()
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         else if (e.target.className.indexOf('_32yJO') != -1) {
+        //             e.preventDefault()
+        //             if (e.deltaY > 0) {
+        //                 let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                 if (b2) b2.click()
+        //             }
+        //             else if (e.deltaY < 0) {
+        //                 let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                 if (b1) b1.click()
+        //             }
+        //         }
+        //     },
+        //         { passive: false })
+        // }
         else if (/^https:\/\/www\.redgifs\.com/.test(location.href)) {
             let observer = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
