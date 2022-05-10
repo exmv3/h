@@ -967,21 +967,21 @@ document.addEventListener('DOMContentLoaded', function () {
         //     },
         //         { passive: false })
         // }
-        else if (/^https:\/\/www\.redgifs\.com/.test(location.href)) {
-            let observer = new MutationObserver(function (mutations) {
-                mutations.forEach(function (mutation) {
-                    for (let addNode of mutation.addedNodes) {
-                        if (addNode.nodeType == 1) {
-                            let source = addNode.querySelector(':scope>video>source')
-                            if (source) {
-                                source.src = source.src.replace('-mobile.mp4', '.mp4')
-                            }
-                        }
-                    }
-                });
-            });
-            observer.observe(document.querySelector("body"), { childList: true, subtree: true });
-        }
+        // else if (/^https:\/\/www\.redgifs\.com/.test(location.href)) {
+        //     let observer = new MutationObserver(function (mutations) {
+        //         mutations.forEach(function (mutation) {
+        //             for (let addNode of mutation.addedNodes) {
+        //                 if (addNode.nodeType == 1) {
+        //                     let source = addNode.querySelector(':scope>video>source')
+        //                     if (source) {
+        //                         source.src = source.src.replace('-mobile.mp4', '.mp4')
+        //                     }
+        //                 }
+        //             }
+        //         });
+        //     });
+        //     observer.observe(document.querySelector("body"), { childList: true, subtree: true });
+        // }
         else if (/https:\/\/www\.indexxx\.com\/m\/.+/.test(location.href)) {
             for (let a of document.querySelectorAll('.websiteLink,.psWebsite>a')) {
                 a.href = 'http://www.' + a.innerText
