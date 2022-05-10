@@ -971,9 +971,11 @@ document.addEventListener('DOMContentLoaded', function () {
             let observer = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
                     for (let addNode of mutation.addedNodes) {
-                        let source = addNode.querySelector(':scope>video>source')
-                        if (source) {
-                            source.src = source.src.replace('-mobile.mp4', '.mp4')
+                        if (addNode.nodeType == 1) {
+                            let source = addNode.querySelector(':scope>video>source')
+                            if (source) {
+                                source.src = source.src.replace('-mobile.mp4', '.mp4')
+                            }
                         }
                     }
                 });
