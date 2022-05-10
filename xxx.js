@@ -414,13 +414,15 @@ if (location.hostname.includes('iwara')) {
             if (e.target.tagName == 'VIDEO') {
                 e.preventDefault()
                 // e.target.play()
-                e.target.parentElement.requestFullscreen()
+                // e.target.parentElement.requestFullscreen()
+                document.querySelector('.vjs-fullscreen-control').click()
             }
             else if (e.target.className == 'vjs-poster' || e.target.className == 'vjs-big-play-button') {
                 // this.alert('vjs-poster   vjs-big-play-button')
                 e.preventDefault()
                 e.target.parentElement.querySelector('video').play()
-                e.target.parentElement.requestFullscreen()
+                // e.target.parentElement.requestFullscreen()
+                document.querySelector('.vjs-fullscreen-control').click()
             }
         } else {
             e.preventDefault()
@@ -690,63 +692,224 @@ document.addEventListener('DOMContentLoaded', function () {
         //     });
         //     observer.observe(bodyList, { childList: true, subtree: true });
         // }
+        //instagram v3
         else if (/https:\/\/www\.instagram\.com/i.test(location.href)) {
             addEventListener('wheel', function (e) {
-                if (/_9AhH0|fXIG0/.test(e.target.className)) {
-                    let t = e.target
-                    while (t.parentElement && t.parentElement.className.indexOf('EcJQs') == -1) {
-                        t = t.parentElement
+                if (document.querySelector('.RnEpo._Yhr4')) {
+                    e.preventDefault()
+                    if (/_9AhH0|fXIG0/.test(e.target.className)) {
+                        let t = e.target
+                        while (t.parentElement && t.parentElement.tagName != 'ARTICLE') {
+                            t = t.parentElement
+                        }
+                        if (t.parentElement.tagName == 'ARTICLE') {
+                            if (e.deltaY > 0) {
+                                let b2 = t.parentElement.querySelector('._6CZji')
+                                if (b2) b2.click()
+                                else {
+                                    b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+                                    if (b2) b2.click()
+                                }
+                            }
+                            else if (e.deltaY < 0) {
+                                let b1 = t.parentElement.querySelector('.POSa_')
+                                if (b1) b1.click()
+                                else {
+                                    b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+                                    if (b1) b1.click()
+                                }
+                            }
+                        }
                     }
-                    if (t.tagName == 'HTML') {
+                    else {
                         if (e.deltaY > 0) {
                             let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
-                            if (b2) {
-                                e.preventDefault()
-                                b2.click()
-                            }
+                            if (b2) b2.click()
                         }
                         else if (e.deltaY < 0) {
                             let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
-                            if (b1) {
-                                e.preventDefault()
-                                b1.click()
-                            }
+                            if (b1) b1.click()
                         }
                     }
-                    else if (t.parentElement.className.indexOf('EcJQs') != -1) {
+                }
+                else if (/_9AhH0|fXIG0/.test(e.target.className)) {
+                    let t = e.target
+                    while (t.parentElement && t.parentElement.tagName != 'ARTICLE') {
+                        t = t.parentElement
+                    }
+                    if (t.parentElement.tagName == 'ARTICLE' && t.parentElement.className != 'ySN3v') {
                         e.preventDefault()
                         if (e.deltaY > 0) {
                             let b2 = t.parentElement.querySelector('._6CZji')
                             if (b2) b2.click()
-                            else {
-                                b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
-                                if (b2) b2.click()
-                            }
+                            else if (t.parentElement.nextElementSibling) t.parentElement.nextElementSibling.scrollIntoView()
                         }
                         else if (e.deltaY < 0) {
                             let b1 = t.parentElement.querySelector('.POSa_')
                             if (b1) b1.click()
-                            else {
-                                b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
-                                if (b1) b1.click()
-                            }
+                            else if (t.parentElement.previousElementSibling) t.parentElement.previousElementSibling.scrollIntoView()
                         }
                     }
                 }
-                else if (document.querySelector('.RnEpo._Yhr4')) {
-                    // e.preventDefault()
-                    if (e.deltaY > 0) {
-                        let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
-                        if (b2) b2.click()
+                else {
+                    let articles = document.querySelectorAll('article'), viewa = articles[0]
+                    for (let i = 1; i < articles.length; i++) {
+                        if (Math.abs(articles[i].getBoundingClientRect().y) < Math.abs(viewa.getBoundingClientRect().y))
+                            viewa = articles[i]
                     }
-                    else if (e.deltaY < 0) {
-                        let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
-                        if (b1) b1.click()
+                    if (e.deltaY > 0 && viewa.nextElementSibling) {
+                        e.preventDefault()
+                        viewa.nextElementSibling.scrollIntoView()
+                    }
+                    if (e.deltaY < 0 && viewa.previousElementSibling) {
+                        e.preventDefault()
+                        viewa.previousElementSibling.scrollIntoView()
                     }
                 }
             },
                 { passive: false })
         }
+        // //instagram v2// bug if (t.tagName == 'HTML')  if (t.parentElement.tagName == 'ARTICLE' && t.parentElement.nextElementSibling) t.parentElement.nextElementSibling.scrollIntoView()
+        // else if (/https:\/\/www\.instagram\.com/i.test(location.href)) {
+        //     addEventListener('wheel', function (e) {
+        //         if (/_9AhH0|fXIG0/.test(e.target.className)) {
+        //             let t = e.target
+        //             while (t.parentElement && t.parentElement.className.indexOf('EcJQs') == -1) {
+        //                 t = t.parentElement
+        //             }
+        //             if (t.tagName == 'HTML') {
+        //                 if (e.deltaY > 0) {
+        //                     let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                     if (b2) {
+        //                         e.preventDefault()
+        //                         b2.click()
+        //                     }
+        //                     else if (!document.querySelector('.RnEpo._Yhr4')) {
+        //                         while (t.parentElement && t.parentElement.tagName != 'ARTICLE') {
+        //                             t = t.parentElement
+        //                         }
+        //                         if (t.parentElement.tagName == 'ARTICLE' && t.parentElement.nextElementSibling) t.parentElement.nextElementSibling.scrollIntoView()
+        //                     }
+        //                 }
+        //                 else if (e.deltaY < 0) {
+        //                     let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                     if (b1) {
+        //                         e.preventDefault()
+        //                         b1.click()
+        //                     }
+        //                     else if (!document.querySelector('.RnEpo._Yhr4')) {
+        //                         while (t.parentElement && t.parentElement.tagName != 'ARTICLE') {
+        //                             t = t.parentElement
+        //                         }
+        //                         if (t.parentElement.tagName == 'ARTICLE' && t.parentElement.previousElementSibling) t.parentElement.previousElementSibling.scrollIntoView()
+        //                     }
+        //                 }
+        //             }
+        //             else if (t.parentElement.className.indexOf('EcJQs') != -1) {
+        //                 e.preventDefault()
+        //                 if (e.deltaY > 0) {
+        //                     let b2 = t.parentElement.querySelector('._6CZji')
+        //                     if (b2) b2.click()
+        //                     else {
+        //                         b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                         if (b2) b2.click()
+        //                         else if (!document.querySelector('.RnEpo._Yhr4')) {
+        //                             while (t.parentElement && t.parentElement.tagName != 'ARTICLE') {
+        //                                 t = t.parentElement
+        //                             }
+        //                             if (t.parentElement.tagName == 'ARTICLE' && t.parentElement.nextElementSibling) t.parentElement.nextElementSibling.scrollIntoView()
+        //                         }
+        //                     }
+        //                 }
+        //                 else if (e.deltaY < 0) {
+        //                     let b1 = t.parentElement.querySelector('.POSa_')
+        //                     if (b1) b1.click()
+        //                     else {
+        //                         b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                         if (b1) b1.click()
+        //                         else if (!document.querySelector('.RnEpo._Yhr4')) {
+        //                             while (t.parentElement && t.parentElement.tagName != 'ARTICLE') {
+        //                                 t = t.parentElement
+        //                             }
+        //                             if (t.parentElement.tagName == 'ARTICLE' && t.parentElement.previousElementSibling) t.parentElement.previousElementSibling.scrollIntoView()
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         else if (document.querySelector('.RnEpo._Yhr4')) {
+        //             // e.preventDefault()
+        //             if (e.deltaY > 0) {
+        //                 let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                 if (b2) b2.click()
+        //             }
+        //             else if (e.deltaY < 0) {
+        //                 let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                 if (b1) b1.click()
+        //             }
+        //         }
+        //     },
+        //         { passive: false })
+        // }
+        // //instagram v1
+        // else if (/https:\/\/www\.instagram\.com/i.test(location.href)) {
+        //     addEventListener('wheel', function (e) {
+        //         if (/_9AhH0|fXIG0/.test(e.target.className)) {
+        //             let t = e.target
+        //             while (t.parentElement && t.parentElement.className.indexOf('EcJQs') == -1) {
+        //                 t = t.parentElement
+        //             }
+        //             if (t.tagName == 'HTML') {
+        //                 if (e.deltaY > 0) {
+        //                     let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                     if (b2) {
+        //                         e.preventDefault()
+        //                         b2.click()
+        //                     }
+        //                 }
+        //                 else if (e.deltaY < 0) {
+        //                     let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                     if (b1) {
+        //                         e.preventDefault()
+        //                         b1.click()
+        //                     }
+        //                 }
+        //             }
+        //             else if (t.parentElement.className.indexOf('EcJQs') != -1) {
+        //                 e.preventDefault()
+        //                 if (e.deltaY > 0) {
+        //                     let b2 = t.parentElement.querySelector('._6CZji')
+        //                     if (b2) b2.click()
+        //                     else {
+        //                         b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                         if (b2) b2.click()
+        //                     }
+        //                 }
+        //                 else if (e.deltaY < 0) {
+        //                     let b1 = t.parentElement.querySelector('.POSa_')
+        //                     if (b1) b1.click()
+        //                     else {
+        //                         b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                         if (b1) b1.click()
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         else if (document.querySelector('.RnEpo._Yhr4')) {
+        //             // e.preventDefault()
+        //             if (e.deltaY > 0) {
+        //                 let b2 = document.querySelector('div.l8mY4.feth3>button.wpO6b')
+        //                 if (b2) b2.click()
+        //             }
+        //             else if (e.deltaY < 0) {
+        //                 let b1 = document.querySelector('div._6Eych.feth3>button.wpO6b')
+        //                 if (b1) b1.click()
+        //             }
+        //         }
+        //     },
+        //         { passive: false })
+        // }
+        //instagram v0
         // else if (/https:\/\/www\.instagram\.com/i.test(location.href)) {
         //     addEventListener('wheel', function (e) {
         //         if (/_9AhH0|fXIG0/.test(e.target.className)) {
