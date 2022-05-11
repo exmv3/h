@@ -401,35 +401,37 @@ addEventListener('click', function (e) {
     if (window.getSelection().toString()) { e.preventDefault() }
 }, { capture: false })
 //dblclick//contextmenu
-if (location.hostname.includes('iwara')) {
-    addEventListener('contextmenu', function (e) {
-
-        if (!document.fullscreenElement) {
-            // if (e.target.className.includes('video-js')){this.alert('video-js')
-            //     e.preventDefault()
-            //     e.target.querySelector('video').play()
-            //     e.target.requestFullscreen()
-            // }
-            // else
+addEventListener('contextmenu', function (e) {
+    if (!document.fullscreenElement) {
+        if (location.hostname.includes('iwara')) {
             if (e.target.tagName == 'VIDEO') {
                 e.preventDefault()
-                // e.target.play()
-                // e.target.parentElement.requestFullscreen()
                 document.querySelector('.vjs-fullscreen-control').click()
             }
             else if (e.target.className == 'vjs-poster' || e.target.className == 'vjs-big-play-button') {
-                // this.alert('vjs-poster   vjs-big-play-button')
                 e.preventDefault()
-                e.target.parentElement.querySelector('video').play()
-                // e.target.parentElement.requestFullscreen()
                 document.querySelector('.vjs-fullscreen-control').click()
+                e.target.parentElement.querySelector('video').play()
             }
-        } else {
-            e.preventDefault()
-            document.exitFullscreen()
         }
-    })
-}
+        else if (location.hostname.includes('youtube')) {
+            if (e.target.tagName == 'VIDEO') {
+                e.preventDefault()
+                document.querySelector('.ytp-fullscreen-button').click()
+            }
+        }
+        else if (!location.hostname.includes('bilibili')){
+            if (e.target.tagName == 'VIDEO') {
+                e.preventDefault()
+                e.target.requestFullscreen()
+                if(e.target.paused) e.target.play()
+            }
+        }
+    } else {
+        e.preventDefault()
+        document.exitFullscreen()
+    }
+})
 
 addEventListener('keydown', function (e) {
     if (e.target.tagName != 'INPUT') {//播放速度

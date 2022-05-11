@@ -7,6 +7,9 @@ body *{
 a:visited {
     color: #777  !important;
 }
+video::-webkit-media-controls-panel {
+  background-image: linear-gradient(transparent, transparent) !important;
+}
 #saqui_BIG_img_DIV{
     overflow-x: hidden ;
     background-color: black ;
