@@ -159,7 +159,8 @@ addEventListener('mousedown', function (e) {
         if (e.button == 0) {
             if (saquiTranslateDiv && saquiTranslateDiv.style.visibility != "hidden")
                 saquiTranslateDiv.style.setProperty('visibility', 'hidden')
-            if (e.target.tagName == 'VIDEO' && !this.location.hostname.match(/iwara/)) {
+            if (e.target.tagName == 'VIDEO'/*  && !this.location.hostname.match(/iwara/) */) {
+                e.stopImmediatePropagation()
                 if (e.target.paused) e.target.play()
                 else e.target.pause()
             }
@@ -191,26 +192,29 @@ addEventListener('mousedown', function (e) {
         }
         else if (e.button == 1) {//video倍速
             if (e.target.tagName == 'VIDEO') {
+                e.stopImmediatePropagation()
                 e.preventDefault()
-                // if (e.target.parentElement.parentElement.id != 'movie_player') e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
-                if (location.hostname.includes('iwara')) {//iwara videojs 播放器会鼠标按下暂停,包括中键
-                    if (e.target.paused) {
-                        e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
-                    }
-                    e.target.play()
-                }
-                else /* if (location.hostname != "www.youtube.com") */ {//不用我的yt.js控制播放速度了
-                    if (e.target.paused) {
-                        e.target.play()
-                    }
-                    else
-                        e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
-                }
+                // // if (e.target.parentElement.parentElement.id != 'movie_player') e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
+                // if (location.hostname.includes('iwara')) {//iwara videojs 播放器会鼠标按下暂停,包括中键
+                //     if (e.target.paused) {
+                //         e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
+                //     }
+                //     e.target.play()
+                // }
+                // else /* if (location.hostname != "www.youtube.com") */ {//不用我的yt.js控制播放速度了
+                //     if (e.target.paused) {
+                //         e.target.play()
+                //     }
+                //     else
+                //         e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
+                // }
+                if (e.target.paused) e.target.play()
+                else e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
                 let t = e.target
                 while (t.parentElement && t.parentElement.tagName != 'A') {
                     t = t.parentElement
                 }
-                if (t.parentElement.tagName == 'A') {
+                if (t.parentElement && t.parentElement.tagName == 'A') {
                     t.parentElement.removeAttribute('href')
                 }
             }
@@ -220,12 +224,13 @@ addEventListener('mousedown', function (e) {
             //     if (v0.paused) v0.play()
             //     else v0.playbackRate = v0.playbackRate == 1 ? 2 : 1
             // }
-            else if (e.target.className == 'mgp_eventCatcher') {
-                e.preventDefault()
-                v0 = document.querySelector('.mgp_videoWrapper>video')
-                if (v0.paused) v0.play()
-                else v0.playbackRate = v0.playbackRate == 1 ? 2 : 1
-            }
+            // //用Adblock Plus 屏蔽就行
+            // else if (e.target.className == 'mgp_eventCatcher') {
+            //     e.preventDefault()
+            //     v0 = document.querySelector('.mgp_videoWrapper>video')
+            //     if (v0.paused) v0.play()
+            //     else v0.playbackRate = v0.playbackRate == 1 ? 2 : 1
+            // }
             // else if (!toPreview && !_info && (e.target == saqui_BIG_img_DIV || e.target.parentElement == saqui_BIG_img_DIV) && saqui_BIG_img_DIV.querySelector('img')) {
             //     // if (HTMLDOM) {//中键回归原网页
             //     //     let bd = HTMLDOM.querySelector('body')
@@ -300,7 +305,7 @@ addEventListener('mousedown', function (e) {
     else if (e.altKey && e.button == 2) {//alt右键删除元素
         e.target.remove()
     }
-})
+}, { capture: true })
 addEventListener('mouseup', function (e) {
     if (e.button == 0) {
 
@@ -393,39 +398,8 @@ addEventListener('click', function (e) {
         e.preventDefault()
         e.stopPropagation()
     }
-    // console.log(window.getSelection().toString())
-    // if (e.target.tagName == 'A') {
-    //     if (e.target == mousedowna && (mousedownX != e.clientX || mousedownY != e.clientY))
-    //         e.preventDefault()
-    // } else {
-    //     let _target = e.target
-    //     while (_target.parentElement && _target.parentElement.tagName != 'A') {
-    //         _target = _target.parentElement
-    //     }
-    //     if (_target.parentElement && _target.parentElement == mousedowna && (mousedownX != e.clientX || mousedownY != e.clientY))
-    //         e.preventDefault()
-    // }
-
-    if (window.getSelection().toString()) { e.preventDefault() }
+    // if (window.getSelection().toString()) { e.preventDefault() }
 }, { capture: true })
-addEventListener('click', function (e) {
-    // e.preventDefault()
-    // e.stopPropagation()
-    // console.log(window.getSelection().toString())
-    // if (e.target.tagName == 'A') {
-    //     if (e.target == mousedowna && (mousedownX != e.clientX || mousedownY != e.clientY))
-    //         e.preventDefault()
-    // } else {
-    //     let _target = e.target
-    //     while (_target.parentElement && _target.parentElement.tagName != 'A') {
-    //         _target = _target.parentElement
-    //     }
-    //     if (_target.parentElement && _target.parentElement == mousedowna && (mousedownX != e.clientX || mousedownY != e.clientY))
-    //         e.preventDefault()
-    // }
-
-    if (window.getSelection().toString()) { e.preventDefault() }
-}, { capture: false })
 //dblclick//contextmenu
 addEventListener('contextmenu', function (e) {
     if (!document.fullscreenElement) {
