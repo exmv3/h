@@ -95,6 +95,36 @@
         {
             "all_frames": true,
             "css": [
+                "instagram.css"
+            ],
+            "matches": [
+                "https://www.instagram.com/*"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "all_frames": true,
+            "css": [
+                "bilibili.css"
+            ],
+            "matches": [
+                "https://www.bilibili.com/*"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "all_frames": true,
+            "css": [
+                "phub.css"
+            ],
+            "matches": [
+                "https://*.pornhub.com/*"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "all_frames": true,
+            "css": [
                 "iwara.css"
             ],
             "matches": [

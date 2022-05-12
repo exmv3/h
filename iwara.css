@@ -7,12 +7,12 @@ html{
     scrollbar-width: none !important;
 }
 
-.container>.region.region-before-content{
+#r18-warning,.container>.region.region-before-content,.block.block-extra-content,.vjs-poster,.vjs-loading-spinner,.vjs-big-play-button{
     display: none !important;
 }
-.block.block-extra-content{
+/* .block.block-extra-content{
     display: none !important;
-}
+} */
 .container,.col-sm-3 {
     width: auto !important;
 }

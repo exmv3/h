@@ -403,35 +403,35 @@ addEventListener('click', function (e) {
 //dblclick//contextmenu
 addEventListener('contextmenu', function (e) {
     if (!document.fullscreenElement) {
-        if (location.hostname.includes('iwara')) {
-            if (e.target.tagName == 'VIDEO') {
-                e.preventDefault()
-                document.querySelector('.vjs-fullscreen-control').click()
-            }
-            else if (e.target.className == 'vjs-poster' || e.target.className == 'vjs-big-play-button') {
-                e.preventDefault()
-                document.querySelector('.vjs-fullscreen-control').click()
-                e.target.parentElement.querySelector('video').play()
-            }
-        }
+        // if (location.hostname.includes('iwara')) {
+        //     if (e.target.tagName == 'VIDEO') {
+        //         e.preventDefault()
+        //         document.querySelector('.vjs-fullscreen-control').click()
+        //     }
+        //     else if (e.target.className == 'vjs-poster' || e.target.className == 'vjs-big-play-button') {
+        //         e.preventDefault()
+        //         document.querySelector('.vjs-fullscreen-control').click()
+        //         e.target.parentElement.querySelector('video').play()
+        //     }
+        // }
         // else if (location.hostname.includes('youtube')) {
         //     if (e.target.tagName == 'VIDEO') {
         //         e.preventDefault()
         //         e.target.requestFullscreen()// document.querySelector('.ytp-fullscreen-button').click()
         //     }
         // }
-        else /* if (!location.hostname.includes('bilibili')) */ {
-            if (e.target.tagName == 'VIDEO') {
-                e.preventDefault()
-                e.target.requestFullscreen()
-                if (e.target.paused) e.target.play()
-            }
+        // else /* if (!location.hostname.includes('bilibili')) */ {}
+        if (e.target.tagName == 'VIDEO') {
+            e.stopImmediatePropagation()
+            e.preventDefault()
+            e.target.requestFullscreen()
+            if (e.target.paused) e.target.play()
         }
     } else {
         e.preventDefault()
         document.exitFullscreen()
     }
-})
+}, { capture: true })
 
 addEventListener('keydown', function (e) {
     if (e.target.tagName != 'INPUT') {//播放速度
