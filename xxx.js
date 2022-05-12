@@ -159,7 +159,11 @@ addEventListener('mousedown', function (e) {
         if (e.button == 0) {
             if (saquiTranslateDiv && saquiTranslateDiv.style.visibility != "hidden")
                 saquiTranslateDiv.style.setProperty('visibility', 'hidden')
-            if (e.target.parentElement && e.target.parentElement == saqui_BIG_img_DIV) {
+            if (e.target.tagName == 'VIDEO' && !this.location.hostname.match(/iwara/)) {
+                if (e.target.paused) e.target.play()
+                else e.target.pause()
+            }
+            else if (e.target.parentElement && e.target.parentElement == saqui_BIG_img_DIV) {
                 _vimg = e.target
                 _zoomImg.src = e.target.src
                 _zoom = e.target.naturalWidth / e.target.width//getComputedStyle(e.target).width.substring(0, getComputedStyle(e.target).width.indexOf('px'))
@@ -210,12 +214,12 @@ addEventListener('mousedown', function (e) {
                     t.parentElement.removeAttribute('href')
                 }
             }
-            else if (e.target.className == 'bilibili-player-dm-tip-wrap') {//注释了因为会video暂停两次-注释掉已经弄掉遮盖层,用adblock plus 屏蔽s1.hdslb.com/bfs/static/player/main/widgets/jsc-player.f42b3147.js
-                e.preventDefault()
-                if (!v0) v0 = document.querySelector('video')
-                if (v0.paused) v0.play()
-                else v0.playbackRate = v0.playbackRate == 1 ? 2 : 1
-            }
+            // else if (e.target.className == 'bilibili-player-dm-tip-wrap') {//已经弄掉遮盖层,用adblock plus 屏蔽s1.hdslb.com/bfs/static/player/main/widgets/jsc-player.f42b3147.js
+            //     e.preventDefault()
+            //     if (!v0) v0 = document.querySelector('video')
+            //     if (v0.paused) v0.play()
+            //     else v0.playbackRate = v0.playbackRate == 1 ? 2 : 1
+            // }
             else if (e.target.className == 'mgp_eventCatcher') {
                 e.preventDefault()
                 v0 = document.querySelector('.mgp_videoWrapper>video')
@@ -385,6 +389,10 @@ addEventListener('mouseup', function (e) {
 //     }
 // })
 addEventListener('click', function (e) {
+    if (e.target.tagName == 'VIDEO'/*  && this.location.hostname.includes('bilibili') */) {
+        e.preventDefault()
+        e.stopPropagation()
+    }
     // console.log(window.getSelection().toString())
     // if (e.target.tagName == 'A') {
     //     if (e.target == mousedowna && (mousedownX != e.clientX || mousedownY != e.clientY))
@@ -401,6 +409,8 @@ addEventListener('click', function (e) {
     if (window.getSelection().toString()) { e.preventDefault() }
 }, { capture: true })
 addEventListener('click', function (e) {
+    // e.preventDefault()
+    // e.stopPropagation()
     // console.log(window.getSelection().toString())
     // if (e.target.tagName == 'A') {
     //     if (e.target == mousedowna && (mousedownX != e.clientX || mousedownY != e.clientY))

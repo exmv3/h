@@ -7,8 +7,12 @@ body *{
 a:visited {
     color: #777  !important;
 }
-video::-webkit-media-controls-panel {
+/* video::-webkit-media-controls-panel {
   background-image: linear-gradient(transparent, transparent) !important;
+} */
+video::-webkit-media-controls-panel{
+    display: none !important;
+    /* -webkit-appearance: none !important; */
 }
 #saqui_BIG_img_DIV{
     overflow-x: hidden ;
