@@ -85,7 +85,17 @@ function f_resize() {
 addEventListener('wheel', function (e) {
     if (saquiTranslateDiv && saquiTranslateDiv.style.visibility != "hidden")
         saquiTranslateDiv.style.setProperty('visibility', 'hidden')
-    if (e.target.parentElement == saqui_BIG_img_DIV) {
+    if (e.target.tagName == 'VIDEO' && document.fullscreenElement) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (e.deltaY > 0) {//往下滚动
+            e.target.currentTime += 3
+        }
+        else if (e.deltaY < 0) {//往上滚动
+            e.target.currentTime -= 3
+        }
+    }
+    else if (e.target.parentElement == saqui_BIG_img_DIV) {
         e.preventDefault()
         e.stopPropagation()
         if (e.deltaY > 0) {//往下滚动
@@ -179,22 +189,28 @@ addEventListener('mousedown', function (e) {
             if (e.target.tagName == 'VIDEO') {
                 e.preventDefault()
                 // if (e.target.parentElement.parentElement.id != 'movie_player') e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
-                if (location.hostname.includes('iwara')) {
+                if (location.hostname.includes('iwara')) {//iwara videojs 播放器会鼠标按下暂停,包括中键
                     if (e.target.paused) {
                         e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
                     }
                     e.target.play()
                 }
-                else if (location.hostname != "www.youtube.com") {
+                else /* if (location.hostname != "www.youtube.com") */ {//不用我的yt.js控制播放速度了
                     if (e.target.paused) {
                         e.target.play()
                     }
-                    else {
+                    else
                         e.target.playbackRate = e.target.playbackRate == 1 ? 2 : 1
-                    }
+                }
+                let t = e.target
+                while (t.parentElement && t.parentElement.tagName != 'A') {
+                    t = t.parentElement
+                }
+                if (t.parentElement.tagName == 'A') {
+                    t.parentElement.removeAttribute('href')
                 }
             }
-            else if (e.target.className == 'bilibili-player-dm-tip-wrap') {
+            else if (e.target.className == 'bilibili-player-dm-tip-wrap') {//注释了因为会video暂停两次-注释掉已经弄掉遮盖层,用adblock plus 屏蔽s1.hdslb.com/bfs/static/player/main/widgets/jsc-player.f42b3147.js
                 e.preventDefault()
                 if (!v0) v0 = document.querySelector('video')
                 if (v0.paused) v0.play()
@@ -414,17 +430,17 @@ addEventListener('contextmenu', function (e) {
                 e.target.parentElement.querySelector('video').play()
             }
         }
-        else if (location.hostname.includes('youtube')) {
-            if (e.target.tagName == 'VIDEO') {
-                e.preventDefault()
-                document.querySelector('.ytp-fullscreen-button').click()
-            }
-        }
-        else if (!location.hostname.includes('bilibili')){
+        // else if (location.hostname.includes('youtube')) {
+        //     if (e.target.tagName == 'VIDEO') {
+        //         e.preventDefault()
+        //         e.target.requestFullscreen()// document.querySelector('.ytp-fullscreen-button').click()
+        //     }
+        // }
+        else /* if (!location.hostname.includes('bilibili')) */ {
             if (e.target.tagName == 'VIDEO') {
                 e.preventDefault()
                 e.target.requestFullscreen()
-                if(e.target.paused) e.target.play()
+                if (e.target.paused) e.target.play()
             }
         }
     } else {

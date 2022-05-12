@@ -26,13 +26,13 @@ playerv.addEventListener('onStateChange', 'onStateChangef')
 playerv.addEventListener('onPlaybackQualityChange', 'onPlaybackQualityChangef')
 
 
-playerv.children[0].children[0].addEventListener('mousedown', function (e) {
-    if (e.button == 1) {
-        if (playerv.getPlayerState() == 1) {
-            movie_player.setPlaybackRate(movie_player.getPlaybackRate() == 1 ? 2 : 1)
-        } else if (playerv.getPlayerState() == 2) {
-            playerv.playVideo()
-        }
-    }
+// playerv.children[0].children[0].addEventListener('mousedown', function (e) {
+//     if (e.button == 1) {
+//         if (playerv.getPlayerState() == 1) {
+//             movie_player.setPlaybackRate(movie_player.getPlaybackRate() == 1 ? 2 : 1)
+//         } else if (playerv.getPlayerState() == 2) {
+//             playerv.playVideo()
+//         }
+//     }
 
-})
+// })
