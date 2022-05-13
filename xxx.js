@@ -264,7 +264,7 @@ addEventListener('mousedown', function (e) {
                 mousedowna.draggable = false
                 let _img = _target.parentElement.querySelector('img')
                 if (_img && (_img.naturalHeight >= 100 && !_img.src.match(/\.svg(?:$|\?)/i))) {
-                    if (!RegExpStorage.test(location.href)) {
+                    if (false && !RegExpStorage.test(location.href)) {
                         let _httpIndex = _target.parentElement.href.lastIndexOf('http');
                         let _andIndex = _target.parentElement.href.indexOf('&', _httpIndex);
                         let _redirectUrl
