@@ -85,15 +85,29 @@ function f_resize() {
 addEventListener('wheel', function (e) {
     if (saquiTranslateDiv && saquiTranslateDiv.style.visibility != "hidden")
         saquiTranslateDiv.style.setProperty('visibility', 'hidden')
-    if (e.target.tagName == 'VIDEO' && document.fullscreenElement) {
-        e.preventDefault()
-        e.stopPropagation()
-        if (e.deltaY > 0) {//往下滚动
-            e.target.currentTime += 3
+    if (e.target.tagName == 'VIDEO') {
+        if (document.fullscreenElement) {
+            e.preventDefault()
+            e.stopPropagation()
+            if (e.deltaY > 0) {//往下滚动
+                e.target.currentTime += 3
+            }
+            else if (e.deltaY < 0) {//往上滚动
+                e.target.currentTime -= 3
+            }
         }
-        else if (e.deltaY < 0) {//往上滚动
-            e.target.currentTime -= 3
-        }
+        // else if (e.target.offsetHeight > innerHeight) {
+        //     e.preventDefault()
+        //     e.stopPropagation()
+        //     if (e.deltaY > 0) {//往下滚动
+        //         e.target.scrollIntoView()
+        //         scrollBy(0, e.target.offsetHeight)
+        //     }
+        //     else if (e.deltaY < 0) {//往上滚动
+        //         e.target.scrollIntoView()
+        //     }
+        // } 
+
     }
     else if (e.target.parentElement == saqui_BIG_img_DIV) {
         e.preventDefault()
@@ -148,7 +162,24 @@ addEventListener('wheel', function (e) {
     else if (e.target == saqui_BIG_img_DIV) {
         e.preventDefault(); scrollBy(0, innerHeight * Math.sign(e.deltaY))
     }
+    else if (e.target.tagName == 'IMG' && location.hostname.includes('iwara')) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (e.deltaY > 0) {//往下滚动
+            if (e.target.getBoundingClientRect().y > 1) {
+                e.target.scrollIntoView()
+            } else {
 
+                scrollBy(0, e.target.getBoundingClientRect().y + e.target.offsetHeight)
+            }
+        }
+        else if (e.deltaY < 0) {//往上滚动
+            if (e.target.getBoundingClientRect().y < -1)
+                e.target.scrollIntoView()
+            else
+                scrollBy(0, e.target.getBoundingClientRect().y - innerHeight)
+        }
+    }
 },
     { passive: false }
 );

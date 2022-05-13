@@ -1,11 +1,11 @@
 html {
     scroll-behavior: auto !important;
 }
-body *{
+a,a *,button{
     user-select: text !important;
 }
 a:visited {
-    color: #777  !important;
+    color: #707  !important;
 }
 video::-webkit-media-controls-panel {
   background-image: linear-gradient(transparent, transparent) !important;

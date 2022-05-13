@@ -166,7 +166,7 @@ function bkmkC0verFolderIDGot(bkmkC0verFolderID) {
 }
 chrome.webRequest.onBeforeRequest.addListener(
     LiteBeforeRequest,
-    { urls: ["<all_urls>"], types: ["main_frame", "image", "media"] },
+    { urls: ["<all_urls>"], types: ["main_frame", "image", "media", "stylesheet", "sub_frame"] },
     ["blocking"]
 );
 let _RegExp = /^file:\/\/\/|login|github\.com|youtube\.com|taobao\.com|jd\.com|qq\.com|weibo\.com|douyu\.com|huya\.com|namethatpornstar\.com|facebook\.com|115\.com|anxia\.com|rarbg|21sextury\.com|tiktok\.com/i;//不屏蔽的规则   .replace(/html\?\d+x\d+.*/,'html')
@@ -191,6 +191,9 @@ function LiteBeforeRequest(_details) {
     }
     else if (/^https:\/\/i\.iwara\.tv\/sites\/default\/files\/styles\/\w+\/public\/.+/.test(_details.url)) {
         return { redirectUrl: _details.url.replace(/\/styles\/\w+\/public\//, '/').replace(/\?itok\=.+$/, '') };
+    }
+    else if (/^https:\/\/.*iwara\./.test(_details.url) && (_details.type == 'stylesheet' || _details.type == 'sub_frame')) {//https://www.iwara.tv/extra_content/frame/46
+        return { cancel: true };
     }
     else if (/^https:\/\/img\.indexxx\.com\/images\/thumbs\/\d+x\d+\//.test(_details.url)) {
         return { redirectUrl: _details.url.replace(/\/thumbs\/\d+x\d+\//, '/') };
