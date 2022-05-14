@@ -1,7 +1,9 @@
 body {
     margin: 0;
 }
-
+#content{
+    background: none !important;
+}
 .video-player-dimensions {
     height: auto !important;
     width: auto !important;
@@ -34,7 +36,8 @@ header,
 .vjs-big-play-button,
 .vjs-hidden,
 .vjs-control-bar,
-.video-processing {
+.video-processing,
+iframe {
     display: none;
 }
 
