@@ -162,24 +162,24 @@ addEventListener('wheel', function (e) {
     else if (e.target == saqui_BIG_img_DIV) {
         e.preventDefault(); scrollBy(0, innerHeight * Math.sign(e.deltaY))
     }
-    else if (e.target.tagName == 'IMG' && location.hostname.includes('iwara')) {
-        e.preventDefault()
-        e.stopPropagation()
-        if (e.deltaY > 0) {//往下滚动
-            if (e.target.getBoundingClientRect().y > 1) {
-                e.target.scrollIntoView()
-            } else {
+    // else if (e.target.tagName == 'IMG' && location.hostname.includes('iwara')) {
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    //     if (e.deltaY > 0) {//往下滚动
+    //         if (e.target.getBoundingClientRect().y > 1) {
+    //             e.target.scrollIntoView()
+    //         } else {
 
-                scrollBy(0, e.target.getBoundingClientRect().y + e.target.offsetHeight)
-            }
-        }
-        else if (e.deltaY < 0) {//往上滚动
-            if (e.target.getBoundingClientRect().y < -1)
-                e.target.scrollIntoView()
-            else
-                scrollBy(0, e.target.getBoundingClientRect().y - innerHeight)
-        }
-    }
+    //             scrollBy(0, e.target.getBoundingClientRect().y + e.target.offsetHeight)
+    //         }
+    //     }
+    //     else if (e.deltaY < 0) {//往上滚动
+    //         if (e.target.getBoundingClientRect().y < -1)
+    //             e.target.scrollIntoView()
+    //         else
+    //             scrollBy(0, e.target.getBoundingClientRect().y - innerHeight)
+    //     }
+    // }
 },
     { passive: false }
 );
