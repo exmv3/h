@@ -19,6 +19,7 @@ video {
 
 .node-buttons,
 .node-info,
+.container,
 .views-column {
     text-align: center;
 }
@@ -47,7 +48,7 @@ header,
 .vjs-control-bar,
 .video-processing,
 iframe {
-    display: none;
+    display: none !important;
 }
 
 .views-row,
