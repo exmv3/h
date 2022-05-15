@@ -785,18 +785,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
                 else {
-                    let articles = document.querySelectorAll('article'), viewa = articles[0]
-                    for (let i = 1; i < articles.length; i++) {
-                        if (Math.abs(articles[i].getBoundingClientRect().y) < Math.abs(viewa.getBoundingClientRect().y))
-                            viewa = articles[i]
-                    }
-                    if (e.deltaY > 0 && viewa.nextElementSibling) {
-                        e.preventDefault()
-                        viewa.nextElementSibling.scrollIntoView()
-                    }
-                    if (e.deltaY < 0 && viewa.previousElementSibling) {
-                        e.preventDefault()
-                        viewa.previousElementSibling.scrollIntoView()
+                    let articles = document.querySelectorAll('article')
+                    if (articles.length > 0) {
+                        let viewa = articles[0]
+                        for (let i = 1; i < articles.length; i++) {
+                            if (Math.abs(articles[i].getBoundingClientRect().y) < Math.abs(viewa.getBoundingClientRect().y))
+                                viewa = articles[i]
+                        }
+                        if (e.deltaY > 0 && viewa.nextElementSibling) {
+                            e.preventDefault()
+                            viewa.nextElementSibling.scrollIntoView()
+                        }
+                        if (e.deltaY < 0 && viewa.previousElementSibling) {
+                            e.preventDefault()
+                            viewa.previousElementSibling.scrollIntoView()
+                        }
                     }
                 }
             },
