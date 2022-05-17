@@ -192,8 +192,12 @@ addEventListener('mousedown', function (e) {
                 saquiTranslateDiv.style.setProperty('visibility', 'hidden')
             if (e.target.tagName == 'VIDEO'/*  && !this.location.hostname.match(/iwara/) */) {
                 e.stopImmediatePropagation()
-                if (e.target.paused) e.target.play()
-                else e.target.pause()
+                if (e.target.getAttribute('focusplay')) {
+                    e.target.removeAttribute('focusplay')
+                } else {
+                    if (e.target.paused) e.target.play()
+                    else e.target.pause()
+                }
             }
             else if (e.target.parentElement && e.target.parentElement == saqui_BIG_img_DIV) {
                 _vimg = e.target
@@ -1417,24 +1421,29 @@ addEventListener('blur', function () {
 if (/^https:\/\/.+\.youtube\.com/.test(location.href))
     addEventListener('focus', function () {
         let ytv = document.querySelector('#movie_player video')
-        if (ytv)
+        if (ytv){
+            ytv.setAttribute('focusplay',11)
             ytv.play()
-        // blurDiv.style.setProperty('visibility', 'hidden')
+            setTimeout(()=>ytv.removeAttribute('focusplay'),400)
+        }
     })
 else if (/^https:\/\/.+\.pornhub\.com/.test(location.href))
     addEventListener('focus', function () {
         let porhv = document.querySelector('.mgp_videoWrapper>video')
-        if (porhv)
+        if (porhv){
+            porhv.setAttribute('focusplay',11)
             porhv.play()
-        // blurDiv.style.setProperty('visibility', 'hidden')
+            setTimeout(()=>porhv.removeAttribute('focusplay'),400)
+        }
     })
 else
     addEventListener('focus', function () {
         if (!v0) v0 = document.querySelector('video')
         if (v0) {
+            v0.setAttribute('focusplay',11)
             v0.play()
+            setTimeout(()=>v0.removeAttribute('focusplay'),400)
         }
-        // blurDiv.style.setProperty('visibility', 'hidden')
     })
 addEventListener('load', function () {
 
