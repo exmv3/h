@@ -1451,11 +1451,11 @@ addEventListener('load', function () {
     if (/https?:\/\/www\.pornstarsnaked\.com\/.+\/.+\/$/.test(location.href)) {
         imgSrc1('div.masonry:nth-child(1) > div:nth-child(1) img', /\/t_(?=\d+\.jpg$)/, '/')
     }
-    else if (location.hostname.includes('iwara')) {//https://ecchi.iwara.tv/images/uploade-2077
-        for (let img of document.querySelectorAll('div.slick-list img')) {
-            saqui_BIG_img_DIV.appendChild(img)
-        }
-    }
+    // else if (location.hostname.includes('iwara')) {//https://ecchi.iwara.tv/images/uploade-2077
+    //     for (let img of document.querySelectorAll('div.slick-list img')) {
+    //         saqui_BIG_img_DIV.appendChild(img)
+    //     }
+    // }
 })
 
 // if (!_DOMContentLoaded_exed && "loading" != document.readyState)
