@@ -542,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('title').setAttribute('o_title_text', document.querySelector('title').innerText)
         document.querySelector('title').innerText = document.querySelector('title').innerText.substr(0, 215)
     }
-    if (!(saqui_BIG_img_DIV.querySelector('img') || /iwara.tv|wikipedia\.org|pinterest\.com|mydrivers\.com|baidu\.com|cnbeta\.com|github\.com/.test(location.href))) {
+    if (!(saqui_BIG_img_DIV.querySelector('img') || /wikipedia\.org|pinterest\.com|mydrivers\.com|baidu\.com|cnbeta\.com|github\.com/.test(location.href))) {
         if (/^https:\/\/io-oi\.xyz\/(\d+)\/content\/([^\/]+)\/index-mirror-(\d+)-(\d+)\.html/.test(location.href)) {//相册封面链接
             let _tab_PIN_CODE = RegExp.$1
             chrome.storage.local.get('backgroundPINCODE', function (result) {
@@ -1450,6 +1450,11 @@ addEventListener('load', function () {
     // else 
     if (/https?:\/\/www\.pornstarsnaked\.com\/.+\/.+\/$/.test(location.href)) {
         imgSrc1('div.masonry:nth-child(1) > div:nth-child(1) img', /\/t_(?=\d+\.jpg$)/, '/')
+    }
+    else if (location.hostname.includes('iwara')) {//https://ecchi.iwara.tv/images/uploade-2077
+        for (let img of document.querySelectorAll('div.slick-list img')) {
+            saqui_BIG_img_DIV.appendChild(img)
+        }
     }
 })
 
