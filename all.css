@@ -9,8 +9,7 @@ button {
 }
 
 a:visited {
-    color: #ff0 !important;
-    background: black !important;
+    color: pink !important;
 }
 
 video::-webkit-media-controls-panel {
