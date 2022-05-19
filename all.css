@@ -5,7 +5,8 @@ a,a *,button{
     user-select: text !important;
 }
 a:visited {
-    color: #707  !important;
+    color: #ff0  !important;
+    background: black  !important;
 }
 video::-webkit-media-controls-panel {
   background-image: linear-gradient(transparent, transparent) !important;
