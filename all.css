@@ -1,16 +1,22 @@
 html {
     scroll-behavior: auto !important;
 }
-a,a *,button{
+
+a,
+a *,
+button {
     user-select: text !important;
 }
+
 a:visited {
-    color: #ff0  !important;
-    background: black  !important;
+    color: #ff0 !important;
+    background: black !important;
 }
+
 video::-webkit-media-controls-panel {
-  background-image: linear-gradient(transparent, transparent) !important;
+    background-image: linear-gradient(transparent, transparent) !important;
 }
+
 /* video::-webkit-media-controls-panel{
     display: none !important;
 } */
@@ -20,52 +26,57 @@ video::-webkit-media-controls-panel {
 /* video::-webkit-media-controls-play-button{
     display: none !important;
 } */
-#saqui_BIG_img_DIV{
-    overflow-x: hidden ;
-    background-color: black ;
-    text-align: center ;
+#saqui_BIG_img_DIV {
+    overflow-x: hidden;
+    background-color: black;
+    text-align: center;
 }
+
 @media (orientation: landscape) {
-    #saqui_BIG_img_DIV>img{
-        display: block  ;
-        margin: auto  ;
-        width: auto ;
-        height: 100vh ;
-        float:none ;
-        border:none ;
-        max-width:none ;
-        max-height:none ;
+    #saqui_BIG_img_DIV>img {
+        display: block;
+        margin: auto;
+        width: auto;
+        height: 100vh;
+        float: none;
+        border: none;
+        max-width: none;
+        max-height: none;
     }
-  }
-  
-  @media (orientation: portrait) {
-    #saqui_BIG_img_DIV>img{
-        display: block  ;
-        margin: auto  ;
-        width: 100vw ;
-        height: auto ;
-        float:none ;
-        border:none ;
-        max-width:none ;
-        max-height:none ;
-    }
-  }
-#saquizoomImg{
-    position: fixed ;
-    pointer-events: none  ;
 }
-#info_saqui_BIG_img{
+
+@media (orientation: portrait) {
+    #saqui_BIG_img_DIV>img {
+        display: block;
+        margin: auto;
+        width: 100vw;
+        height: auto;
+        float: none;
+        border: none;
+        max-width: none;
+        max-height: none;
+    }
+}
+
+#saquizoomImg {
+    position: fixed;
+    pointer-events: none;
+}
+
+#info_saqui_BIG_img {
     visibility: hidden;
     position: fixed;
     left: 0px;
     top: 0px;
 }
-#originURL4646{
+
+#originURL4646 {
     position: fixed;
     right: 0px;
     top: 0px;
 }
-#saquiblurDiv{
+
+#saquiblurDiv {
     z-index: 9999;
     position: fixed;
     left: 0px;
@@ -73,45 +84,54 @@ video::-webkit-media-controls-panel {
     width: 100vw;
     height: 100vh;
 }
+
 .saquiRotateYAnimation {
     animation-duration: 1500ms;
-    animation-timing-function: steps(2,jump-none);
+    animation-timing-function: steps(2, jump-none);
     animation-name: saquiRotateY;
     animation-iteration-count: infinite;
 }
+
 @keyframes saquiRotateY {
-    from{
+    from {
         transform: rotateY(180deg);
     }
-    to{
+
+    to {
         transform: rotateY(0deg);
     }
 }
+
 .saquiBrightness01Animation {
     animation-duration: 1500ms;
-    animation-timing-function: steps(2,jump-none);
+    animation-timing-function: steps(2, jump-none);
     animation-name: saquiBrightness01;
     animation-iteration-count: infinite;
 }
+
 @keyframes saquiBrightness01 {
-    from{
+    from {
         filter: brightness(0);
     }
-    to{
+
+    to {
         filter: brightness(1);
     }
 }
+
 .saquiBrightness051Animation {
     animation-duration: 1500ms;
-    animation-timing-function: steps(2,jump-none);
+    animation-timing-function: steps(2, jump-none);
     animation-name: saquiBrightness051;
     animation-iteration-count: infinite;
 }
+
 @keyframes saquiBrightness051 {
-    from{
+    from {
         filter: brightness(0.5);
     }
-    to{
+
+    to {
         filter: brightness(1);
     }
 }
