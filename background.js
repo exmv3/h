@@ -217,7 +217,7 @@ chrome.contextMenus.create({
         if (info.checked) {
             chrome.webRequest.onBeforeRequest.addListener(
                 LiteBeforeRequest,
-                { urls: ["<all_urls>"], types: ["main_frame"] },
+                { urls: ["<all_urls>"], types: ["main_frame", "image", "media", "stylesheet", "sub_frame"] },
                 ["blocking"]
             );
         }
