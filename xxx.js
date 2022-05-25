@@ -216,7 +216,8 @@ addEventListener('mousedown', function (e) {
                     document.documentElement.style.setProperty('cursor', 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRF////p8QbyAAAAApJREFUeJxjYAAAAAIAAUivpHEAAAAASUVORK5CYII=),text')
                 }
                 else {
-                    document.exitFullscreen()
+                    if (document.fullscreenElement)
+                        document.exitFullscreen()
                     document.documentElement.style.setProperty('cursor', 'auto')
                     _zoomImg.style.setProperty('visibility', 'hidden')
                     e.target.style.setProperty('opacity', '1')
@@ -1421,28 +1422,28 @@ addEventListener('blur', function () {
 if (/^https:\/\/.+\.youtube\.com/.test(location.href))
     addEventListener('focus', function () {
         let ytv = document.querySelector('#movie_player video')
-        if (ytv){
-            ytv.setAttribute('focusplay',11)
+        if (ytv) {
+            ytv.setAttribute('focusplay', 11)
             ytv.play()
-            setTimeout(()=>ytv.removeAttribute('focusplay'),400)
+            setTimeout(() => ytv.removeAttribute('focusplay'), 400)
         }
     })
 else if (/^https:\/\/.+\.pornhub\.com/.test(location.href))
     addEventListener('focus', function () {
         let porhv = document.querySelector('.mgp_videoWrapper>video')
-        if (porhv){
-            porhv.setAttribute('focusplay',11)
+        if (porhv) {
+            porhv.setAttribute('focusplay', 11)
             porhv.play()
-            setTimeout(()=>porhv.removeAttribute('focusplay'),400)
+            setTimeout(() => porhv.removeAttribute('focusplay'), 400)
         }
     })
 else
     addEventListener('focus', function () {
         if (!v0) v0 = document.querySelector('video')
         if (v0) {
-            v0.setAttribute('focusplay',11)
+            v0.setAttribute('focusplay', 11)
             v0.play()
-            setTimeout(()=>v0.removeAttribute('focusplay'),400)
+            setTimeout(() => v0.removeAttribute('focusplay'), 400)
         }
     })
 addEventListener('load', function () {
