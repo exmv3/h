@@ -301,6 +301,57 @@ chrome.commands.onCommand.addListener(function (command) {
         switch_to_lastTab()
     }
 });
+// let renewT
+// function xqlegxyz(intevID0) {
+//     clearInterval(intevID0)
+//     let xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             try {
+//                 chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/io-oi\.xyz\/(\d+)\/index\.html/)[1] }, () => {
+//                     renewT = Date.now() + 60000 * parseInt(this.responseText.match(/Next renew remaining.+?(\d+)/)[1])
+//                     let intevID = setInterval(() => {
+//                         if (Date.now() > renewT) {
+//                             console.log('bbbbrunning intevID: ', intevID, ';  minn: ', this.responseText.match(/Next renew remaining.+?(\d+)/)[1])
+//                             xqlegxyz(intevID)
+//                         }
+//                     }, 1000);
+//                 })
+//             } catch (error) {
+//                 console.log(666, error)
+//                 xhttp.onreadystatechange = function () {
+//                     if (this.readyState == 4 && this.status == 200) {
+//                         try {
+//                             xhttp.onreadystatechange = function () {
+//                                 if (this.readyState == 4 && this.status == 200) {
+//                                     chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/io-oi\.xyz\/(\d+)\/index\.html/)[1] }, () => {
+//                                         renewT = Date.now() + 60000 * parseInt(this.responseText.match(/Next renew remaining.+?(\d+)/)[1])
+//                                         let intevID = setInterval(() => {
+//                                             if (Date.now() > renewT) {
+//                                                 console.log('bbbbindex.php!!! running intevID: ', intevID)
+//                                                 xqlegxyz(intevID)
+//                                             }
+//                                         }, 1000);
+//                                     })
+//                                 }
+//                             };
+//                             xhttp.open("GET", "https://leg.xyz/" + this.responseText.match(/\/showcode\.php\?check\=\d+/)[0], true);
+//                             xhttp.send();
+//                         } catch (error) {
+//                             console.log('要登录', error)
+//                             chrome.tabs.create({ url: 'https://leg.xyz/index.php' })
+//                         }
+//                     }
+//                 };
+//                 xhttp.open("GET", "https://leg.xyz/index.php", true);
+//                 xhttp.send();
+//             }
+//         }
+//     };
+//     xhttp.open("GET", "https://leg.xyz/showcode.php?check=185482727812550", true);
+//     xhttp.send();
+// }
+// xqlegxyz()
 let renewT
 function xqlegxyz(intevID0) {
     clearInterval(intevID0)
@@ -308,7 +359,7 @@ function xqlegxyz(intevID0) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             try {
-                chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/io-oi\.xyz\/(\d+)\/index\.html/)[1] }, () => {
+                chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/vip.leg\.xyz\/(\d+)\//)[1] }, () => {
                     renewT = Date.now() + 60000 * parseInt(this.responseText.match(/Next renew remaining.+?(\d+)/)[1])
                     let intevID = setInterval(() => {
                         if (Date.now() > renewT) {
@@ -324,7 +375,7 @@ function xqlegxyz(intevID0) {
                         try {
                             xhttp.onreadystatechange = function () {
                                 if (this.readyState == 4 && this.status == 200) {
-                                    chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/io-oi\.xyz\/(\d+)\/index\.html/)[1] }, () => {
+                                    chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/vip.leg\.xyz\/(\d+)\//)[1] }, () => {
                                         renewT = Date.now() + 60000 * parseInt(this.responseText.match(/Next renew remaining.+?(\d+)/)[1])
                                         let intevID = setInterval(() => {
                                             if (Date.now() > renewT) {

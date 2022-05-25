@@ -543,10 +543,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('title').innerText = document.querySelector('title').innerText.substr(0, 215)
     }
     if (!(saqui_BIG_img_DIV.querySelector('img') || /iwara.tv|wikipedia\.org|pinterest\.com|mydrivers\.com|baidu\.com|cnbeta\.com|github\.com/.test(location.href))) {
-        if (/^https:\/\/io-oi\.xyz\/(\d+)\/content\/([^\/]+)\/index-mirror-(\d+)-(\d+)\.html/.test(location.href)) {//相册封面链接
+        if (/^https:\/\/vip.leg\.xyz\/(\d+)\/content\/([^\/]+)\/index-mirror-(\d+)-(\d+)\.html/.test(location.href)) {//相册封面链接
             let _tab_PIN_CODE = RegExp.$1
             chrome.storage.local.get('backgroundPINCODE', function (result) {
-                let img1Src = `https://io-oi.xyz/${result.backgroundPINCODE || _tab_PIN_CODE || 404}/showimage/nudecollect-1/image00001-1-${RegExp.$3}-1/${RegExp.$2}/1/leg.xyz-${RegExp.$2}-image00001.jpg` // 211
+                let img1Src = `https://vip.leg.xyz/${result.backgroundPINCODE || _tab_PIN_CODE || 404}/showimage/nudecollect-1/image00001-1-${RegExp.$3}-1/${RegExp.$2}/1/leg.xyz-${RegExp.$2}-image00001.jpg` // 211
                 document.title = RegExp.$2//1
                 let _amount_of_img = RegExp.$4//3
                 let ii = 1
@@ -563,7 +563,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 loadNextIMG()
             });
         }
-        else if (/^https:\/\/io-oi\.xyz\/(\d+)\/(?:search\.html\?q\=(.+)|search\/(.+)\/)*/i.test(location.href)) {//https://io-oi\.xyz/319672137410692/index.html
+        else if (/^https:\/\/vip.leg\.xyz\/(\d+)\/(?:search\.html\?q\=(.+)|search\/(.+)\/)*/i.test(location.href)) {//https://vip.leg\.xyz/319672137410692/index.html
             let _tab_PIN_CODE = RegExp.$1
             let s1
             if (RegExp.$2 || RegExp.$3) s1 = (RegExp.$2 || RegExp.$3) + ' xyz'
@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ioloadf(result.backgroundPINCODE || 404)
                             }
                         }
-                        xhq.open("GET", location.href.replace(/(?<=^https:\/\/io-oi\.xyz\/)\d+(?=\/)/i, result.backgroundPINCODE), true);
+                        xhq.open("GET", location.href.replace(/(?<=^https:\/\/vip.leg\.xyz\/)\d+(?=\/)/i, result.backgroundPINCODE), true);
                         xhq.send();
                     }
 
@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let _reg_imgsrc = /(\/nudecollect-\d+\/(image\d+)-\d+-\d+-\d+\/([^\/]+)\/\d+\/)[^\/]+\.jpg/i
                 for (let img of document.querySelectorAll('.content img')) {
                     if (_reg_imgsrc.test(img.src))
-                        img.src = `https://io-oi.xyz/${pinCode}/showimage${RegExp.$1}leg.xyz-${RegExp.$3}-${RegExp.$2}.jpg`
+                        img.src = `https://vip.leg.xyz/${pinCode}/showimage${RegExp.$1}leg.xyz-${RegExp.$3}-${RegExp.$2}.jpg`
                 }
             }
         }
@@ -1067,12 +1067,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 body.remove()
             }
         }
-        // else if (/^https:\/\/io-oi\.xyz\/(\d+)\//i.test(location.href)) {//https://io-oi\.xyz/319672137410692/index.html
+        // else if (/^https:\/\/vip.leg\.xyz\/(\d+)\//i.test(location.href)) {//https://vip.leg\.xyz/319672137410692/index.html
         //     let _tab_PIN_CODE = RegExp.$1
         //     let _reg_imgsrc = /(\/nudecollect-\d+\/(image\d+)-\d+-\d+-\d+\/([^\/]+)\/\d+\/)[^\/]+\.jpg/i
         //     for (let img of document.querySelectorAll('img')) {
         //         if (_reg_imgsrc.test(img.src)) {
-        //             img.src = `https://io-oi.xyz/${_tab_PIN_CODE}/showimage${RegExp.$1}leg.xyz-${RegExp.$3}-${RegExp.$2}.jpg`
+        //             img.src = `https://vip.leg.xyz/${_tab_PIN_CODE}/showimage${RegExp.$1}leg.xyz-${RegExp.$3}-${RegExp.$2}.jpg`
         //         }
         //     }
         //     if (document.documentElement.innerText.match('404 Not Found')) {
@@ -1476,8 +1476,8 @@ addEventListener('load', function () {
 //     }
 // }
 // function ioloadf(pinCode) {
-//     if (/^https:\/\/io-oi\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-(\d+)-(\d+)\.html/.test(location.href)) {//相册封面链接
-//         let img1Src = `https://io-oi.xyz/${pinCode}/showimage/nudecollect-1/image00001-1-${RegExp.$2}-1/${RegExp.$1}/1/leg.xyz-${RegExp.$1}-image00001.jpg`
+//     if (/^https:\/\/vip.leg\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-(\d+)-(\d+)\.html/.test(location.href)) {//相册封面链接
+//         let img1Src = `https://vip.leg.xyz/${pinCode}/showimage/nudecollect-1/image00001-1-${RegExp.$2}-1/${RegExp.$1}/1/leg.xyz-${RegExp.$1}-image00001.jpg`
 //         let s1 = RegExp.$1
 //         let _amount_of_img = RegExp.$3
 //         let ii = 1
@@ -1502,7 +1502,7 @@ addEventListener('load', function () {
 //             let _reg_imgsrc = /(\/nudecollect-\d+\/(image\d+)-\d+-\d+-\d+\/([^\/]+)\/\d+\/)[^\/]+\.jpg/i
 //             for (let img of document.querySelectorAll('.content img')) {
 //                 if (_reg_imgsrc.test(img.src))
-//                     img.src = `https://io-oi.xyz/${pinCode}/showimage${RegExp.$1}leg.xyz-${RegExp.$3}-${RegExp.$2}.jpg`
+//                     img.src = `https://vip.leg.xyz/${pinCode}/showimage${RegExp.$1}leg.xyz-${RegExp.$3}-${RegExp.$2}.jpg`
 //             }
 //         }
 //         if (document.readyState == 'complete') loadf()
