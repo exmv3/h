@@ -18,4 +18,6 @@
 .picbox>h4 {
     display: none !important;
 }
-
+.navbar,div.main>div.content:nth-child(10),div.main>div.content:nth-child(14),a[href="fconfirm.html"]{
+    display: none !important
+}
