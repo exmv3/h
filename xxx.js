@@ -562,6 +562,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
                 loadNextIMG()
+                if (result.backgroundPINCODE != _tab_PIN_CODE) {
+                    var xhq = new XMLHttpRequest();
+                        xhq.responseType = 'document';
+                        xhq.onreadystatechange = function () {
+                            if (this.readyState == 4 && this.status == 200) {
+                                if (this.responseXML.documentElement.innerText.includes('404 Not Found')) alert(404404)
+                                document.documentElement.appendChild(this.responseXML.querySelector('body > div.main>div.top:nth-child(4)'))
+                            }
+                        }
+                        xhq.open("GET", location.href.replace(/(?<=^https:\/\/vip.leg\.xyz\/)\d+(?=\/)/i, result.backgroundPINCODE), true);
+                        xhq.send();
+                }
             });
         }
         else if (/^https:\/\/vip.leg\.xyz\/(\d+)\/(?:search\.html\?q\=(.+)|search\/(.+)\/)*/i.test(location.href)) {//https://vip.leg\.xyz/319672137410692/index.html

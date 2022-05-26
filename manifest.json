@@ -72,6 +72,16 @@
         {
             "all_frames": true,
             "css": [
+                "legcontent.css"
+            ],
+            "matches": [
+                "https://vip.leg.xyz/*/content/*"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "all_frames": true,
+            "css": [
                 "leg.css"
             ],
             "matches": [
