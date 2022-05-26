@@ -1,6 +1,6 @@
 // chrome.storage.local.clear()
 chrome.storage.local.remove('backgroundPINCODE')
-let _Reg_iooi = /^https:\/\/io-oi\.xyz\/\d+\/(.*)/i
+let _Reg_iooi = /^https:\/\/vip.leg\.xyz\/\d+\/(.*)/i
 let liveBkmkC0verFolderID
 chrome.bookmarks.onCreated.addListener(bookmarksFolderChangeF)
 chrome.bookmarks.onMoved.addListener(bookmarksFolderChangeF)
@@ -43,7 +43,7 @@ function bkmkC0verFolderIDGot(bkmkC0verFolderID) {
         }
         if (request.bkmk) {
             function bkmkf(results) {
-                // let reg_iooiTitle = /^https:\/\/io-oi\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-\d+-\d+\.html/
+                // let reg_iooiTitle = /^https:\/\/vip.leg\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-\d+-\d+\.html/
                 if (results.length == 0) {
                     chrome.bookmarks.create({ title: '-titl-' + request.bkmk.titl + '-BkmkC0ver-' + request.bkmk.BkmkC0ver + '-PgT-' + request.bkmk.PgT + '-Pg0k-' + request.bkmk.Pg0k, url: request.bkmk.zURL }, function (node) {
                         chrome.bookmarks.move(node.id, { parentId: liveBkmkC0verFolderID/* , index: 0 */ }, function () {
@@ -107,7 +107,7 @@ function bkmkC0verFolderIDGot(bkmkC0verFolderID) {
         onclick: function (info, tab) {
             function imgctxcovf(results) {
                 if (results.length == 0) {
-                    chrome.bookmarks.create({ title: '-titl-' + (tab.url.match(/^https:\/\/io-oi\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-\d+-\d+\.html/) && RegExp.$1 || tab.title.trim()) + '-BkmkC0ver-' + info.srcUrl, url: tab.url }, function (node) {
+                    chrome.bookmarks.create({ title: '-titl-' + (tab.url.match(/^https:\/\/vip.leg\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-\d+-\d+\.html/) && RegExp.$1 || tab.title.trim()) + '-BkmkC0ver-' + info.srcUrl, url: tab.url }, function (node) {
                         chrome.bookmarks.move(node.id, { parentId: liveBkmkC0verFolderID/* , index: 0 */ })
                     })
                 }
@@ -121,7 +121,7 @@ function bkmkC0verFolderIDGot(bkmkC0verFolderID) {
                     } else {
                         if (results[0].title.includes('-BkmkC0ver-')) alert('封面书签不在BkmkC0ver文件夹\n' + results[0].url)
                         else
-                            chrome.bookmarks.create({ title: '-titl-' + (tab.url.match(/^https:\/\/io-oi\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-\d+-\d+\.html/) && RegExp.$1 || tab.title.trim()) + '-BkmkC0ver-' + info.srcUrl, url: tab.url }, function (node) {
+                            chrome.bookmarks.create({ title: '-titl-' + (tab.url.match(/^https:\/\/vip.leg\.xyz\/\d+\/content\/([^\/]+)\/index-mirror-\d+-\d+\.html/) && RegExp.$1 || tab.title.trim()) + '-BkmkC0ver-' + info.srcUrl, url: tab.url }, function (node) {
                                 chrome.bookmarks.move(node.id, { parentId: liveBkmkC0verFolderID/* , index: 0 */ })
                             })
                     }
@@ -308,7 +308,7 @@ chrome.commands.onCommand.addListener(function (command) {
 //     xhttp.onreadystatechange = function () {
 //         if (this.readyState == 4 && this.status == 200) {
 //             try {
-//                 chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/io-oi\.xyz\/(\d+)\/index\.html/)[1] }, () => {
+//                 chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/vip.leg\.xyz\/(\d+)\/index\.html/)[1] }, () => {
 //                     renewT = Date.now() + 60000 * parseInt(this.responseText.match(/Next renew remaining.+?(\d+)/)[1])
 //                     let intevID = setInterval(() => {
 //                         if (Date.now() > renewT) {
@@ -324,7 +324,7 @@ chrome.commands.onCommand.addListener(function (command) {
 //                         try {
 //                             xhttp.onreadystatechange = function () {
 //                                 if (this.readyState == 4 && this.status == 200) {
-//                                     chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/io-oi\.xyz\/(\d+)\/index\.html/)[1] }, () => {
+//                                     chrome.storage.local.set({ backgroundPINCODE: this.responseText.match(/https:\/\/vip.leg\.xyz\/(\d+)\/index\.html/)[1] }, () => {
 //                                         renewT = Date.now() + 60000 * parseInt(this.responseText.match(/Next renew remaining.+?(\d+)/)[1])
 //                                         let intevID = setInterval(() => {
 //                                             if (Date.now() > renewT) {

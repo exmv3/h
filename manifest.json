@@ -75,10 +75,10 @@
                 "leg.css"
             ],
             "matches": [
-                "https://io-oi.xyz/*"
+                "https://vip.leg.xyz/*"
             ],
             "exclude_matches": [
-                "https://io-oi.xyz/*/content/*"
+                "https://vip.leg.xyz/*/content/*"
             ],
             "run_at": "document_start"
         },

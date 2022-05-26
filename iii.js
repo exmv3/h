@@ -22,7 +22,7 @@ chrome.storage.local.get('backgroundPINCODE', function (result) {
                 if (!btm) continue
                 let a = document.createElement('a')
                 a.href = b.url
-                let imgsrc = btm[2].replace(/(?<=^https:\/\/io-oi\.xyz\/)\d+(?=\/)/i, ibackground_PIN_CODE)
+                let imgsrc = btm[2].replace(/(?<=^https:\/\/vip.leg\.xyz\/)\d+(?=\/)/i, ibackground_PIN_CODE)
                 a.title = btm[1].trim() || imgsrc
                 let img = document.createElement('img')
                 img.src = imgsrc
@@ -68,7 +68,7 @@ chrome.storage.onChanged.addListener(function (changes, areaName) {
 chrome.bookmarks.onCreated.addListener(function (id, b) {
     if (ibackground_PIN_CODE && /(.*)-BkmkC0ver-(.*?)(?=-PgT-.*|$)/.test(b.title)) {
         let bkTitle = RegExp.$1
-        let bkimgSrc = RegExp.$2.replace(/(?<=^https:\/\/io-oi\.xyz\/)\d+(?=\/)/i, ibackground_PIN_CODE)
+        let bkimgSrc = RegExp.$2.replace(/(?<=^https:\/\/vip.leg\.xyz\/)\d+(?=\/)/i, ibackground_PIN_CODE)
         let a = document.createElement('a')
         a.href = b.url
         a.title = bkTitle && bkTitle.trim() ? bkTitle : bkimgSrc
@@ -82,7 +82,7 @@ chrome.bookmarks.onChanged.addListener(function (id, b) {//b : changeInfo只存�
     chrome.bookmarks.get(id, function (bookmarksgot) {
         if (ibackground_PIN_CODE && b.title && /(.*)-BkmkC0ver-(.*?)(?=-PgT-.*|$)/.test(b.title)) {
             let bkTitle = RegExp.$1
-            let bkimgSrc = RegExp.$2.replace(/(?<=^https:\/\/io-oi\.xyz\/)\d+(?=\/)/i, ibackground_PIN_CODE)
+            let bkimgSrc = RegExp.$2.replace(/(?<=^https:\/\/vip.leg\.xyz\/)\d+(?=\/)/i, ibackground_PIN_CODE)
             let a = document.createElement('a')
             a.href = bookmarksgot[0].url
             a.title = bkTitle && bkTitle.trim() ? bkTitle : bkimgSrc
